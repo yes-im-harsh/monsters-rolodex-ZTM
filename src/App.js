@@ -30,6 +30,7 @@ class App extends Component {
     )
   }
 }
+
 //<----------------------------------Part2-------------------------------->
 // class App extends Component {
 //   constructor() {
