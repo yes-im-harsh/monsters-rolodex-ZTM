@@ -11,11 +11,20 @@ class App extends Component {
       Monsters: [],
       SearchField: ''
     };
+    // this.onHandleChange = this.onHandleChange.bind(this); //No use of doin this in new es-6 feature, just make an arrow fuction to do this.
   }
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(response => response.json())
       .then(users => this.setState({ Monsters: users }));
+  }
+
+  // onHandleChange(e) {
+  //   this.setState({ SearchField: e.target.value }) //Old way, IN es-6 just declear a function with arrow function, and then you can use this key word to get state.
+  // }
+
+  onHandleChange = (e) => {
+    this.setState({ SearchField: e.target.value })
   }
 
   render() {
@@ -32,7 +41,7 @@ class App extends Component {
         <h1>Monster Rolodex</h1>
         <SearchBox
           PlaceHolder='Search'
-          HandleChange={(e) => { this.setState({ SearchField: e.target.value }) }} />
+          HandleChange={this.onHandleChange} />
         <CardList Monsters={FiltedSearch} />
       </div >
     )
